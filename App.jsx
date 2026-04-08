@@ -15,21 +15,6 @@ const products = [
     name: "Trang trí sân khấu",
     price: "15.000.000đ",
     img: "https://images.unsplash.com/photo-1505236858219-8359eb29e329"
-  },
-  {
-    name: "Cổng hoa cưới",
-    price: "8.000.000đ",
-    img: "https://images.unsplash.com/photo-1520854221256-17451cc331bf"
-  },
-  {
-    name: "Bàn gallery cưới",
-    price: "5.000.000đ",
-    img: "https://images.unsplash.com/photo-1519225421980-715cb0215aed"
-  },
-  {
-    name: "Trang trí gia tiên",
-    price: "10.000.000đ",
-    img: "https://images.unsplash.com/photo-1521336575822-6da63fb45455"
   }
 ];
 
@@ -48,54 +33,77 @@ export default function App() {
         <p>Dịch vụ trang trí cưới hỏi chuyên nghiệp</p>
       </div>
 
-      {/* GRID */}
-      <div style={{
-        maxWidth: 1100,
-        margin: "40px auto",
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))",
-        gap: 20
-      }}>
+      <div style={{ maxWidth: 1200, margin: "30px auto", display: "flex", gap: 20 }}>
 
-        {products.map((p, i) => (
-          <div key={i} style={{
-            background: "#fff",
-            borderRadius: 15,
-            overflow: "hidden",
-            boxShadow: "0 8px 20px rgba(0,0,0,0.08)"
+        {/* SIDEBAR DANH MỤC */}
+        <div style={{ width: 280, background: "#fff", padding: 20, borderRadius: 10 }}>
+          <h3 style={{ marginBottom: 15 }}>DANH MỤC SẢN PHẨM</h3>
+
+          <div style={{ borderTop: "1px solid #eee" }}>
+            <p>TRANG TRÍ NHÀ THỜ</p>
+            <p>TRANG TRÍ GIA TIÊN HOA LỤA</p>
+            <p>TRANG TRÍ GIA TIÊN HOA TƯƠI</p>
+
+            <p style={{ color: "#e91e63", fontWeight: "bold" }}>
+              TRANG TRÍ TIỆC CƯỚI HOA TƯƠI
+            </p>
+
+            <ul style={{ marginLeft: 15 }}>
+              <li>Backdrop Hoa Tươi</li>
+              <li>Gallery Hoa Tươi</li>
+              <li>Lối Đi Hoa Tươi</li>
+              <li>Sân Khấu Hoa Tươi</li>
+            </ul>
+
+            <p>MÂM QUẢ - LONG PHỤNG</p>
+            <p>XE HOA + XE KHÁCH</p>
+            <p>RẠP + BÀN TIỆC</p>
+            <p>HOA TƯƠI CẦM TAY + CÀI ÁO</p>
+            <p>TRANG TRÍ SỰ KIỆN - SINH NHẬT</p>
+            <p>ĐÈN CÂY LONG PHỤNG + PHỤ KIỆN</p>
+          </div>
+        </div>
+
+        {/* PRODUCT GRID */}
+        <div style={{ flex: 1 }}>
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))",
+            gap: 20
           }}>
 
-            {/* IMAGE */}
-            <img src={p.img} alt=""
-              style={{ width: "100%", height: 200, objectFit: "cover" }}
-            />
-
-            {/* CONTENT */}
-            <div style={{ padding: 15 }}>
-              <h3 style={{ fontSize: 18 }}>{p.name}</h3>
-              <p style={{
-                color: "#e91e63",
-                fontWeight: "bold",
-                fontSize: 16
+            {products.map((p, i) => (
+              <div key={i} style={{
+                background: "#fff",
+                borderRadius: 12,
+                overflow: "hidden",
+                boxShadow: "0 6px 15px rgba(0,0,0,0.08)"
               }}>
-                {p.price}
-              </p>
 
-              <button style={{
-                marginTop: 10,
-                width: "100%",
-                padding: 10,
-                background: "#e91e63",
-                color: "#fff",
-                border: "none",
-                borderRadius: 8
-              }}>
-                Liên hệ
-              </button>
-            </div>
+                <img src={p.img} alt="" style={{ width: "100%", height: 200, objectFit: "cover" }} />
+
+                <div style={{ padding: 15 }}>
+                  <h3>{p.name}</h3>
+                  <p style={{ color: "#e91e63", fontWeight: "bold" }}>{p.price}</p>
+
+                  <button style={{
+                    marginTop: 10,
+                    width: "100%",
+                    padding: 10,
+                    background: "#e91e63",
+                    color: "#fff",
+                    border: "none",
+                    borderRadius: 6
+                  }}>
+                    Liên hệ
+                  </button>
+                </div>
+
+              </div>
+            ))}
 
           </div>
-        ))}
+        </div>
 
       </div>
 
