@@ -1,96 +1,101 @@
 import React from "react";
 
-const packages = [
+const products = [
   {
-    id: "goi1",
-    title: "GÓI CƠ BẢN",
+    name: "Backdrop hoa tươi",
+    price: "12.000.000đ",
+    img: "https://images.unsplash.com/photo-1529636798458-92182e662485"
+  },
+  {
+    name: "Lối đi hoa cưới",
+    price: "6.000.000đ",
+    img: "https://images.unsplash.com/photo-1519741497674-611481863552"
+  },
+  {
+    name: "Trang trí sân khấu",
+    price: "15.000.000đ",
+    img: "https://images.unsplash.com/photo-1505236858219-8359eb29e329"
+  },
+  {
+    name: "Cổng hoa cưới",
+    price: "8.000.000đ",
+    img: "https://images.unsplash.com/photo-1520854221256-17451cc331bf"
+  },
+  {
+    name: "Bàn gallery cưới",
     price: "5.000.000đ",
-    items: ["Cổng hoa đơn giản", "Backdrop gia tiên", "Bàn thờ", "Ghế hai họ"]
+    img: "https://images.unsplash.com/photo-1519225421980-715cb0215aed"
   },
   {
-    id: "goi2",
-    title: "GÓI TIÊU CHUẨN",
+    name: "Trang trí gia tiên",
     price: "10.000.000đ",
-    items: ["Cổng hoa cao cấp", "Backdrop đẹp", "Bàn gia tiên", "Hoa tươi"]
-  },
-  {
-    id: "goi3",
-    title: "GÓI CAO CẤP",
-    price: "20.000.000đ",
-    items: ["Cổng thiết kế", "Backdrop cao cấp", "Full trang trí", "Concept riêng"]
+    img: "https://images.unsplash.com/photo-1521336575822-6da63fb45455"
   }
 ];
 
-export default function HiepTranWedding() {
+export default function App() {
   return (
-    <div style={{ fontFamily: "'Segoe UI', sans-serif", background: "#f8f9fb" }}>
+    <div style={{ fontFamily: "Segoe UI", background: "#f5f6fa" }}>
 
-      {/* HERO */}
-      <div style={{ background: "linear-gradient(135deg,#e91e63,#ff758c)", color: "white", padding: "60px 20px", textAlign: "center" }}>
-        <h1 style={{ fontSize: 42, marginBottom: 10 }}>Hiệp Trần Wedding</h1>
-        <p style={{ fontSize: 18 }}>Trang trí gia tiên - Dịch vụ cưới hỏi trọn gói</p>
+      {/* HEADER */}
+      <div style={{
+        background: "linear-gradient(135deg,#e91e63,#ff758c)",
+        color: "#fff",
+        padding: 40,
+        textAlign: "center"
+      }}>
+        <h1 style={{ fontSize: 40 }}>Hiệp Trần Wedding</h1>
+        <p>Dịch vụ trang trí cưới hỏi chuyên nghiệp</p>
       </div>
 
-      <div style={{ maxWidth: 1100, margin: "-40px auto 0", padding: 20 }}>
+      {/* GRID */}
+      <div style={{
+        maxWidth: 1100,
+        margin: "40px auto",
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))",
+        gap: 20
+      }}>
 
-        <div style={{ display: "flex", gap: 25, alignItems: "flex-start" }}>
+        {products.map((p, i) => (
+          <div key={i} style={{
+            background: "#fff",
+            borderRadius: 15,
+            overflow: "hidden",
+            boxShadow: "0 8px 20px rgba(0,0,0,0.08)"
+          }}>
 
-          {/* MAIN */}
-          <div style={{ flex: 3 }}>
+            {/* IMAGE */}
+            <img src={p.img} alt=""
+              style={{ width: "100%", height: 200, objectFit: "cover" }}
+            />
 
-            <div style={{ background: "#fff", padding: 30, borderRadius: 16, boxShadow: "0 10px 30px rgba(0,0,0,0.08)" }}>
-              <h2 style={{ fontSize: 30, marginBottom: 10 }}>Bảng giá trang trí gia tiên</h2>
+            {/* CONTENT */}
+            <div style={{ padding: 15 }}>
+              <h3 style={{ fontSize: 18 }}>{p.name}</h3>
+              <p style={{
+                color: "#e91e63",
+                fontWeight: "bold",
+                fontSize: 16
+              }}>
+                {p.price}
+              </p>
 
-              {/* TOC */}
-              <div style={{ marginTop: 20, padding: 20, background: "#f1f3f6", borderRadius: 12 }}>
-                <b>Mục lục</b>
-                <ul>
-                  {packages.map(p => (
-                    <li key={p.id} style={{ marginTop: 5 }}>
-                      <a href={`#${p.id}`} style={{ color: "#e91e63", textDecoration: "none" }}>{p.title}</a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* PACKAGES */}
-              {packages.map(p => (
-                <div key={p.id} id={p.id} style={{ marginTop: 40, paddingBottom: 20, borderBottom: "1px solid #eee" }}>
-                  <h3 style={{ fontSize: 22 }}>{p.title}</h3>
-                  <p style={{ color: "#e91e63", fontSize: 22, fontWeight: "bold" }}>{p.price}</p>
-                  <ul style={{ marginTop: 10 }}>
-                    {p.items.map((it, i) => (
-                      <li key={i} style={{ marginBottom: 6 }}>{it}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-
-              {/* CTA */}
-              <div style={{ marginTop: 40, padding: 30, background: "linear-gradient(135deg,#ffe4ec,#fff)", textAlign: "center", borderRadius: 16 }}>
-                <h3>Liên hệ ngay để được tư vấn</h3>
-                <p>0900 000 000</p>
-                <button style={{ marginTop: 10, background: "#e91e63", color: "#fff", padding: "12px 25px", border: "none", borderRadius: 8, fontSize: 16 }}>
-                  Nhắn Zalo
-                </button>
-              </div>
-
-            </div>
-
-          </div>
-
-          {/* SIDEBAR */}
-          <div style={{ flex: 1 }}>
-            <div style={{ background: "#fff", padding: 20, borderRadius: 16, boxShadow: "0 10px 30px rgba(0,0,0,0.08)", position: "sticky", top: 20 }}>
-              <h3>Liên hệ nhanh</h3>
-              <p style={{ marginTop: 10 }}>📞 0900 000 000</p>
-              <button style={{ marginTop: 10, width: "100%", background: "#25D366", color: "#fff", padding: 10, border: "none", borderRadius: 8 }}>
-                Chat Zalo
+              <button style={{
+                marginTop: 10,
+                width: "100%",
+                padding: 10,
+                background: "#e91e63",
+                color: "#fff",
+                border: "none",
+                borderRadius: 8
+              }}>
+                Liên hệ
               </button>
             </div>
-          </div>
 
-        </div>
+          </div>
+        ))}
 
       </div>
 
